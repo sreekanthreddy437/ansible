@@ -10,5 +10,5 @@
       include_role:
         name: ansible_ntp
     - name: Apply ansible_passwd role by name
-        include_role:
+      include_role:
             name: ansible_passwd
