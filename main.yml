@@ -11,4 +11,3 @@
     - name: Apply ansible_passwd role by name
       include_role:
         name: ansible_passwd
-
