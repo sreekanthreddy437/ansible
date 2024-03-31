@@ -1,0 +1,14 @@
+---
+- name: Execute Compliance Roles
+  hosts: localhost
+  tasks:
+    - name: Apply ansible_motd role by name
+      include_role:
+        name: ansible_motd
+    
+    - name: Apply ansible_ntp role by name
+      include_role:
+        name: ansible_ntp
+    - name: Apply ansible_passwd role by name
+        include_role:
+            name: ansible_passwd
