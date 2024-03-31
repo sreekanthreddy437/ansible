@@ -1,22 +1,12 @@
 ---
-- name: Execute Compliance Roles
+- name: Execute Compliance Tasks
   hosts: "{{ target_host }}"
   tasks:
-    - name: Apply ansible_motd role
-      include_role:
-        name: ansible_motd
-        tasks_from: main.yml
-      vars:
-        ansible_role_path: compliance-audit/roles
-    - name: Apply ansible_ntp role
-      include_role:
-        name: ansible_ntp
-        tasks_from: main.yml
-      vars:
-        ansible_role_path: compliance-audit/roles
-    - name: Apply ansible_passwd role
-      include_role:
-        name: ansible_passwd
-        tasks_from: main.yml
-      vars:
-        ansible_role_path: compliance-audit/roles
+    - name: Apply MOTD configuration
+      include_tasks: compliance-audit/tasks/ansible_motd.yml
+
+    - name: Apply NTP configuration
+      include_tasks: compliance-audit/tasks/ansible_ntp.yml
+
+    - name: Apply Password configuration
+      include_tasks: compliance-audit/tasks/ansible_passwd.yml
