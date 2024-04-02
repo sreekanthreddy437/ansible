@@ -3,7 +3,7 @@
   hosts: "{{ target_host }}"
   tasks:
     - name: Execute ansible_motd playbook
-      include_tasks: compliance-audit/roles/ansible_motd/tasks/main.yaml
+      include_tasks: compliance-audit/roles/ansible_motd/tasks/main2.yaml
       vars:
         target_host: "{{ target_host }}"
 
