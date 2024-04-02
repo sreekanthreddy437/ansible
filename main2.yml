@@ -1,0 +1,18 @@
+---
+- name: Execute Compliance Tasks
+  hosts: "{{ target_host }}"
+  tasks:
+    - name: Execute ansible_motd playbook
+      include_tasks: compliance-audit/roles/ansible_motd/tasks/main.yaml
+      vars:
+        target_host: "{{ target_host }}"
+
+    - name: Execute ansible_ntp playbook
+      include_tasks: compliance-audit/roles/ansible_ntp/tasks/main.yaml
+      vars:
+        target_host: "{{ target_host }}"
+
+    - name: Execute ansible_passwd playbook
+      include_tasks: compliance-audit/roles/ansible_passwd/tasks/main.yaml
+      vars:
+        target_host: "{{ target_host }}"
