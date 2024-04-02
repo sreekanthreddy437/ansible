@@ -2,6 +2,11 @@
 - name: Execute Compliance Tasks
   hosts: "{{ target_host }}"
   tasks:
-    - import_playbook: compliance-audit/roles/ansible_motd/tasks/main.yaml
-    - import_playbook: compliance-audit/roles/ansible_ntp/tasks/main.yml
-    - import_playbook: compliance-audit/roles/ansible_passwd/tasks/main.yml
+    - name: Execute ansible_motd playbook
+      shell: ansible-playbook compliance-audit/roles/ansible_motd/tasks/main.yaml
+
+    - name: Execute ansible_ntp playbook
+      shell: ansible-playbook compliance-audit/roles/ansible_ntp/tasks/main.yaml
+
+    - name: Execute ansible_passwd playbook
+      shell: ansible-playbook compliance-audit/roles/ansible_passwd/tasks/main.yaml
