@@ -3,10 +3,10 @@
   hosts: "{{ target_host }}"
   tasks:
     - name: Execute ansible_motd playbook
-      shell: ansible-playbook compliance-audit/roles/ansible_motd/tasks/main.yaml
+      shell: ansible-playbook compliance-audit/roles/ansible_ntp/tasks/main.yml
 
     - name: Execute ansible_ntp playbook
-      shell: ansible-playbook compliance-audit/roles/ansible_ntp/tasks/main.yaml
+      shell: ansible-playbook compliance-audit/roles/ansible_ntp/tasks/main.yml
 
     - name: Execute ansible_passwd playbook
-      shell: ansible-playbook compliance-audit/roles/ansible_passwd/tasks/main.yaml
+      shell: ansible-playbook compliance-audit/roles/ansible_passwd/tasks/main.yml
