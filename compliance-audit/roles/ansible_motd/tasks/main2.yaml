@@ -1,6 +1,5 @@
 ---
 - name: Ansible_motd
-  hosts: "{{ target_host }}"
   tasks:
     - name: Print message
       debug:
