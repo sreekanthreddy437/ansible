@@ -1,0 +1,8 @@
+- hosts: localhost
+  tasks:
+    - import_role:
+        name: compliance-audit/roles/ansible_motd
+    - import_role:
+        name: compliance-audit/roles/ansible_ntp
+    - import_role:
+        name: compliance-audit/roles/ansible_passwd
