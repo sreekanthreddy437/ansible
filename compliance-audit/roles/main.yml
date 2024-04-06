@@ -1,4 +1,9 @@
-- name: Print a message
-  debug:
-    msg: "Hello, ansible_passwd playbook executed successfully!"
+- hosts: target_vm
+  tasks:
+    - import_role:
+        name: ansible_motd
+    - import_role:
+        name: ansible_ntp
+    - import_role:
+        name: ansible_passwd
     
