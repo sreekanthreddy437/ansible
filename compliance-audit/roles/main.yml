@@ -1,0 +1,8 @@
+- hosts: target_vm
+  tasks:
+    - import_role:
+        name: ansible_motd
+    - import_role:
+        name: ansible_ntp
+    - import_role:
+        name: ansible_passwd
