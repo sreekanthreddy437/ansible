@@ -1,4 +1,14 @@
+---
 - name: Print a message
   debug:
     msg: "Hello, ansible_motd playbook executed successfully!"
+
+- name: List files using shell command
+  shell:
+    cmd: ls -la  
+  register: files_list
+
+- name: Display files list
+  debug:
+    var: files_list.stdout_lines
 
