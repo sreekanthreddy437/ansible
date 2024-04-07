@@ -5,6 +5,8 @@
       import_role:
         name: compliance-audit/roles/ansible_motd
       register: result_motd
+    - debug:
+        var: result_motd  
 
     - name: Execute ansible_ntp role
       import_role:
