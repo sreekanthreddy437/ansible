@@ -1,0 +1,38 @@
+---
+- hosts: target_vm
+  tasks:
+    - name: Execute ansible_motd role
+      import_role:
+        name: compliance-audit/roles/ansible_motd
+      register: result_motd
+
+    - name: Execute ansible_ntp role
+      import_role:
+        name: compliance-audit/roles/ansible_ntp
+      register: result_ntp
+
+    - name: Execute ansible_passwd role
+      import_role:
+        name: compliance-audit/roles/ansible_passwd
+      register: result_passwd
+
+    - name: Store role execution status
+      set_fact:
+        role_results:
+          ansible_motd: "{{ result_motd }}"
+          ansible_ntp: "{{ result_ntp }}"
+          ansible_passwd: "{{ result_passwd }}"
+
+    - name: Send role execution status to endpoint
+      uri:
+        url: "https://www.toptal.com/developers/postbin/1712466926220-4553961146157"
+        method: POST
+        body: "{{ role_results | to_nice_json }}"
+        body_format: json
+        headers:
+          X-Status: "Awesome"
+        status_code: 200  # Adjust status code as needed
+      register: http_result
+
+    - debug:
+        var: http_result  # Display HTTP request result for debugging
