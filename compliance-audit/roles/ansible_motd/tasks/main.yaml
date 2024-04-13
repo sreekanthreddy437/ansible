@@ -8,6 +8,16 @@
     cmd: ls -la  
   register: files_list
 
+- name: List files using shell command
+  shell:
+    cmd: pwd  
+  register: path
+  
+- name: List files using shell command
+  shell:
+    cmd: uname  
+  register: osname
+
 - name: Display files list
   debug:
     var: files_list.stdout_lines
