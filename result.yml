@@ -7,7 +7,7 @@
 
     - name: Fetch role outputs file from target VM
       fetch:
-        src: "/home/ec2-user/role_outputs.yml"
+        src: "/tmp/role_outputs.yml"
         dest: "/tmp/role_outputs.yml"
 
     - name: Include role outputs
