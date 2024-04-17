@@ -1,0 +1,25 @@
+---
+- hosts: target_vm
+  tasks:
+    - name: Execute your_role role
+      import_role:
+        name: compliance-audit/roles/ansible_ntp  # Update with the correct path to your role
+
+    - name: Fetch role outputs file from target VM
+      fetch:
+        src: "/home/ec2-user/role_outputs.yml"
+        dest: "/tmp/role_outputs.yml"
+
+    - name: Include role outputs
+      include_vars:
+        file: "/tmp/role_outputs.yml"
+
+    - name: Display role execution results
+      debug:
+        var: files_list
+
+    - debug:
+        var: path
+
+    - debug:
+        var: osname
