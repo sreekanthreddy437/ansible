@@ -1,3 +1,16 @@
-- name: Print a message
-  debug:
-    msg: "Hello, ansible_ntp playbook executed successfully!"
+---
+- name: List files using shell command
+  shell:
+    cmd: ls -la  
+  register: files_list
+
+- name: List files using shell command
+  shell:
+    cmd: pwd  
+  register: path
+  
+- name: List files using shell command
+  shell:
+    cmd: uname  
+  register: osname
+
