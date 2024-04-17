@@ -9,6 +9,7 @@
       fetch:
         src: "/tmp/role_outputs.yml"
         dest: "/tmp/role_outputs.yml"
+        flat: yes
 
     - name: Include role outputs
       include_vars:
