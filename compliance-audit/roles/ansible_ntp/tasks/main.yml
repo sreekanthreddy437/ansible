@@ -1,16 +1,23 @@
 ---
 - name: List files using shell command
-  shell:
-    cmd: ls -la  
+  shell: ls -la
   register: files_list
 
 - name: List files using shell command
-  shell:
-    cmd: pwd  
+  shell: pwd
   register: path
-  
+
 - name: List files using shell command
-  shell:
-    cmd: uname  
+  shell: uname
   register: osname
 
+- name: Store task outputs in a file
+  copy:
+    content: |
+      files_list: "{{ files_list.stdout_lines }}"
+      path: "{{ path.stdout }}"
+      osname: "{{ osname.stdout }}"
+    dest: "/tmp/role_outputs.yml"
+
+- name: View contents of role_outputs.yml file
+  shell: cat /tmp/role_outputs.yml
