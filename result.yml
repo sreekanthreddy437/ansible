@@ -53,13 +53,13 @@
 ---
 - hosts: target_vm
   tasks:
-    # - name: Execute motd role
-    #   import_role:
-    #     name: compliance-audit/roles/ansible_motd
+    - name: Execute motd role
+      import_role:
+        name: compliance-audit/roles/ansible_motd
 
-    # - name: Execute ntp role
-    #   import_role:
-    #     name: compliance-audit/roles/ansible_ntp
+    - name: Execute ntp role
+      import_role:
+        name: compliance-audit/roles/ansible_ntp
 
     - name: Execute passwd role
       import_role:
@@ -86,8 +86,19 @@
     # - name: Include role outputs
     #   include_vars:
     #     file: "/tmp/ansible_passwd.yml"
+    
+    - name: Display failure reason if any role block failed in motd role
+      debug:
+        msg: "{{ motd_failure_reason }}"
+      when: role_failed | default(false)
 
-    - name: Display failure reason if any role block failed
+
+    - name: Display failure reason if any role block failed in ntp role
+      debug:
+        msg: "{{ ntp_failure_reason }}"
+      when: role_failed | default(false)
+    
+    - name: Display failure reason if any role block failed in passwd role
       debug:
         msg: "{{ passwd_failure_reason }}"
       when: role_failed | default(false)
