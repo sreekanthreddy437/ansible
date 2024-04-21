@@ -55,4 +55,3 @@
       osname: "{{ osname.stdout }}"
       failure_reason: "{{ failure_reason }}"
     dest: "/tmp/ansible_passwd.yml"
-  when: not role_failed
