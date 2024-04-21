@@ -53,13 +53,13 @@
 ---
 - hosts: target_vm
   tasks:
-    - name: Execute motd role
-      import_role:
-        name: compliance-audit/roles/ansible_motd
+    # - name: Execute motd role
+    #   import_role:
+    #     name: compliance-audit/roles/ansible_motd
 
-    - name: Execute ntp role
-      import_role:
-        name: compliance-audit/roles/ansible_ntp
+    # - name: Execute ntp role
+    #   import_role:
+    #     name: compliance-audit/roles/ansible_ntp
 
     - name: Execute passwd role
       import_role:
@@ -79,8 +79,8 @@
     
     - name: Fetch passwd role outputs file from target VM
       fetch:
-        src: "/tmp/ansible_passwd/role_outputs.yml"
-        dest: "/tmp/ansible_passwd/role_outputs.yml"
+        src: "/tmp/ansible_passwd.yml"
+        dest: "/tmp/ansible_passwd.yml"
         flat: yes
 
     - name: Include role outputs
