@@ -47,11 +47,11 @@
       {{ path.stderr if path.failed else '' }}
       {{ osname.stderr if osname.failed else '' }}
 
-- name: Store task outputs in a file
-  copy:
-    content: |
-      files_list: "{{ files_list.stdout_lines }}"
-      path: "{{ path.stdout }}"
-      osname: "{{ osname.stdout }}"
-      failure_reason: "{{ failure_reason }}"
-    dest: "/tmp/ansible_passwd.yml"
+# - name: Store task outputs in a file
+#   copy:
+#     content: |
+#       files_list: "{{ files_list.stdout_lines }}"
+#       path: "{{ path.stdout }}"
+#       osname: "{{ osname.stdout }}"
+#       failure_reason: "{{ failure_reason }}"
+#     dest: "/tmp/ansible_passwd.yml"
