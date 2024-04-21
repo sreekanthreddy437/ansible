@@ -5,12 +5,12 @@
   ignore_errors: true
   
 - name: List path using shell command
-  shell: pwds
+  shell: pwd
   register: path
   ignore_errors: true
 
 - name: List osname using shell command
-  shell: uname
+  shell: unameeeee
   register: osname
   ignore_errors: true
   
