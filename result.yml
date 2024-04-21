@@ -65,17 +65,17 @@
       import_role:
         name: compliance-audit/roles/ansible_passwd
         
-    - name: Fetch motd role outputs file from target VM
-      fetch:
-        src: "/tmp/ansible_motd/role_outputs.yml"
-        dest: "/tmp/ansible_motd/role_outputs.yml"
-        flat: yes
+    # - name: Fetch motd role outputs file from target VM
+    #   fetch:
+    #     src: "/tmp/ansible_motd/role_outputs.yml"
+    #     dest: "/tmp/ansible_motd/role_outputs.yml"
+    #     flat: yes
     
-    - name: Fetch ntp role outputs file from target VM
-      fetch:
-        src: "/tmp/ansible_ntp/role_outputs.yml"
-        dest: "/tmp/ansible_ntp/role_outputs.yml"
-        flat: yes
+    # - name: Fetch ntp role outputs file from target VM
+    #   fetch:
+    #     src: "/tmp/ansible_ntp/role_outputs.yml"
+    #     dest: "/tmp/ansible_ntp/role_outputs.yml"
+    #     flat: yes
     
     - name: Fetch passwd role outputs file from target VM
       fetch:
