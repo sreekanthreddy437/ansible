@@ -14,10 +14,13 @@
   register: osname
   ignore_errors: true
   
-- name: Set error fact if any command failed
+- name: summarise item compliance
   set_fact:
-    role_failed: true
-    motd_failure_reason: >-
-      {{ files_list.stderr if files_list.failed else '' }}
-      {{ path.stderr if path.failed else '' }}
-      {{ osname.stderr if osname.failed else '' }}
+    motd_compliant: "{{ false if (files_list.changed) else true }}"
+
+- name: return compliance result
+  set_fact:
+    motd_audit_ntp: "{ 'compliant': {{ ( false if (files_list.changed) else true ) }} }"
+
+- ansible.builtin.debug:
+    var: motd_audit_ntp
