@@ -85,7 +85,7 @@
 
     - name: Include role outputs
       include_vars:
-        file: "/tmp/ansible_passwd/role_outputs.yml"
+        file: "/tmp/ansible_passwd.yml"
 
     - name: Display failure reason if any role block failed
       debug:
