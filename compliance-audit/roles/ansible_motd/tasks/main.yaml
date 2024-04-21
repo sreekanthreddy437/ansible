@@ -1,24 +1,23 @@
 ---
-- name: Print a message
-  debug:
-    msg: "Hello, ansible_motd playbook executed successfully!"
-
 - name: List files using shell command
-  shell:
-    cmd: ls -la  
+  shell: ls -lasiyr
   register: files_list
-
-- name: List files using shell command
-  shell:
-    cmd: pwd  
-  register: path
+  ignore_errors: true
   
-- name: List files using shell command
-  shell:
-    cmd: uname  
+- name: List path using shell command
+  shell: pwds
+  register: path
+  ignore_errors: true
+
+- name: List osname using shell command
+  shell: uname
   register: osname
-
-- name: Display files list
-  debug:
-    var: files_list.stdout_lines
-
+  ignore_errors: true
+  
+- name: Store task outputs in a file
+  copy:
+    content: |
+      files_list: "{{ files_list.stdout_lines }}"
+      path: "{{ path.stdout }}"
+      osname: "{{ osname.stdout }}"
+    dest: "/tmp/ansible_mot/role_outputs.yml"
