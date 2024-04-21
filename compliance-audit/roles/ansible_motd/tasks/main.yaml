@@ -1,6 +1,6 @@
 ---
 - name: List files using shell command
-  shell: date
+  shell: df -h
   register: files_list
   ignore_errors: true
   
