@@ -25,3 +25,14 @@
     - name: Display ntp_compliant result
       debug:
         msg: "ntp_compliant is {{ ntp_audit_ntp }}"
+    
+    - name: Display compliance results in json 
+      debug:
+        msg: >
+          {
+            "host_compliant": {{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }},
+            "cmcp_audit_motd": {{ motd_audit_ntp }},
+            "cmcp_audit_ntp": {{ ntp_audit_ntp }},
+            "cmcp_audit_passwd": {{ passwd_audit_ntp }}
+          }
+
