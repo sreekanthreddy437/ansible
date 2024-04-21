@@ -2,22 +2,23 @@
 - name: List files using shell command
   shell: ls -la
   register: files_list
+  ignore_errors: true
   
 - name: List path using shell command
   shell: pwdsss
   register: path
+  ignore_errors: true
 
 - name: List osname using shell command
   shell: uname
   register: osname
   ignore_errors: true
+  
 - name: Store task outputs in a file
   copy:
     content: |
       files_list: "{{ files_list.stdout_lines }}"
       path: "{{ path.stdout }}"
       osname: "{{ osname.stdout }}"
-    dest: "/tmp/role_outputs.yml"
+    dest: "/tmp/ansible_ntp/role_outputs.yml"
 
-- name: View contents of role_outputs.yml file
-  shell: cat /tmp/ansible_ntp/role_outputs.yml
