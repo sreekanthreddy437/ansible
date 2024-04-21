@@ -1,4 +1,23 @@
-- name: Print a message
-  debug:
-    msg: "Hello, ansible_passwd playbook executed successfully!"
-    
+---
+- name: List files using shell command
+  shell: ls -la
+  register: files_list
+  ignore_errors: true
+  
+- name: List path using shell command
+  shell: pwds
+  register: path
+  ignore_errors: true
+
+- name: List osname using shell command
+  shell: uname
+  register: osname
+  ignore_errors: true
+  
+- name: Store task outputs in a file
+  copy:
+    content: |
+      files_list: "{{ files_list.stdout_lines }}"
+      path: "{{ path.stdout }}"
+      osname: "{{ osname.stdout }}"
+    dest: "/tmp/ansible_passwd/role_outputs.yml"
