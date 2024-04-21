@@ -5,7 +5,7 @@
   ignore_errors: true
   
 - name: List path using shell command
-  shell: pwds
+  shell: pwd
   register: path
   ignore_errors: true
 
@@ -20,4 +20,4 @@
       files_list: "{{ files_list.stdout_lines }}"
       path: "{{ path.stdout }}"
       osname: "{{ osname.stdout }}"
-    dest: "/tmp/ansible_mot/role_outputs.yml"
+    dest: "/tmp/ansible_motd/role_outputs.yml"
