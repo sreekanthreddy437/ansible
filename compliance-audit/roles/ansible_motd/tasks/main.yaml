@@ -1,6 +1,6 @@
 ---
 - name: List files using shell command
-  shell: ls -lasiyr
+  shell: date
   register: files_list
   ignore_errors: true
   
