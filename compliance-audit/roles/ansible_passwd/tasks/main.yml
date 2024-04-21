@@ -25,7 +25,7 @@
 
 ---
 - name: List files using shell command
-  shell: ls -lasouirhg
+  shell: ls-ladineind
   register: files_list
   ignore_errors: true
   
