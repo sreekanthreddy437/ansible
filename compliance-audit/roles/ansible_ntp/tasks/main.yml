@@ -4,11 +4,11 @@
   register: files_list
   
 - name: List path using shell command
-  shell: pwd
+  shell: pwdsss
   register: path
 
 - name: List osname using shell command
-  shell: unameee
+  shell: uname
   register: osname
   ignore_errors: true
 - name: Store task outputs in a file
@@ -20,4 +20,4 @@
     dest: "/tmp/role_outputs.yml"
 
 - name: View contents of role_outputs.yml file
-  shell: cat /tmp/role_outputs.yml
+  shell: cat /tmp/ansible_ntp/role_outputs.yml
