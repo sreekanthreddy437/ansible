@@ -35,7 +35,7 @@
   ignore_errors: true
 
 - name: List osname using shell command
-  shell: unameeeee
+  shell: uname
   register: osname
   ignore_errors: true
 
