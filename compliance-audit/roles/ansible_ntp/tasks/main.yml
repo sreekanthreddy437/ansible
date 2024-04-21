@@ -3,12 +3,12 @@
   shell: ls -la
   register: files_list
 
-- name: List files using shell command
+- name: List path using shell command
   shell: pwd
   register: path
 
-- name: List files using shell command
-  shell: uname
+- name: List osname using shell command
+  shell: unameee
   register: osname
 
 - name: Store task outputs in a file
