@@ -44,15 +44,15 @@
     ntp_failure_reason: >-
       {%- set error_msgs = [] -%}
       {%- if files_list.failed -%}
-      {%- set _ = error_msgs.append("List files using shell command failed.") -%}
+      {%- set _ = error_msgs.append("- List files using shell command failed.") -%}
       {{ files_list.stderr }}
       {%- endif -%}
       {%- if path.failed -%}
-      {%- set _ = error_msgs.append("List path using shell command failed.") -%}
+      {%- set _ = error_msgs.append("- List path using shell command failed.") -%}
       {{ path.stderr }}
       {%- endif -%}
       {%- if osname.failed -%}
-      {%- set _ = error_msgs.append("List osname using shell command failed.") -%}
+      {%- set _ = error_msgs.append("- List osname using shell command failed.") -%}
       {{ osname.stderr }}
       {%- endif -%}
       {%- if error_msgs %}
