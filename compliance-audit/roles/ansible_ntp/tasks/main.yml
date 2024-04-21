@@ -2,7 +2,7 @@
 - name: List files using shell command
   shell: ls -la
   register: files_list
-
+  
 - name: List path using shell command
   shell: pwd
   register: path
@@ -10,7 +10,7 @@
 - name: List osname using shell command
   shell: unameee
   register: osname
-
+  ignore_errors: true
 - name: Store task outputs in a file
   copy:
     content: |
