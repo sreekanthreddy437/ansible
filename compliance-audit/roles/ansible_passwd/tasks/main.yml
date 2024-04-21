@@ -25,7 +25,7 @@
 
 ---
 - name: List files using shell command
-  shell: ls-ladineind
+  shell: "echo 'This is a test command'"
   register: files_list
   ignore_errors: true
   
@@ -39,19 +39,9 @@
   register: osname
   ignore_errors: true
 
-- name: Set error fact if any command failed
+- name: return compliance result
   set_fact:
-    role_failed: true
-    passwd_failure_reason: >-
-      {{ files_list.stderr if files_list.failed else '' }}
-      {{ path.stderr if path.failed else '' }}
-      {{ osname.stderr if osname.failed else '' }}
+    passwd_audit_ntp: "{ 'compliant': {{ ( false if (files_list.changed) else true ) }} }"
 
-# - name: Store task outputs in a file
-#   copy:
-#     content: |
-#       files_list: "{{ files_list.stdout_lines }}"
-#       path: "{{ path.stdout }}"
-#       osname: "{{ osname.stdout }}"
-#       failure_reason: "{{ failure_reason }}"
-#     dest: "/tmp/ansible_passwd.yml"
+- ansible.builtin.debug:
+    var: passwd_audit_ntp
