@@ -1,26 +1,94 @@
+# ---
+# - hosts: target_vm
+#   tasks:
+#     - name: Execute motd role
+#       import_role:
+#         name: compliance-audit/roles/ansible_motd  # Update with the correct path to your role
+
+#     - name: Execute ntp role
+#       import_role:
+#         name: compliance-audit/roles/ansible_ntp  # Update with the correct path to your role
+        
+#     - name: Execute passwd role
+#       import_role:
+#         name: compliance-audit/roles/ansible_passwd  # Update with the correct path to your role
+
+   
+#     - name: Fetch motd role outputs file from target VM
+#       fetch:
+#         src: "/tmp/ansible_motd/role_outputs.yml"
+#         dest: "/tmp/ansible_motd/role_outputs.yml"
+#         flat: yes
+    
+#     - name: Fetch ntp role outputs file from target VM
+#       fetch:
+#         src: "/tmp/ansible_ntp/role_outputs.yml"
+#         dest: "/tmp/ansible_ntp/role_outputs.yml"
+#         flat: yes
+    
+#     - name: Fetch passwd role outputs file from target VM
+#       fetch:
+#         src: "/tmp/ansible_passwd/role_outputs.yml"
+#         dest: "/tmp/ansible_passwd/role_outputs.yml"
+#         flat: yes
+
+
+#     - name: Include role outputs
+#       include_vars:
+#         file: "/tmp/role_outputs.yml"
+
+#     - name: Display role execution results
+#       debug:
+#         var: files_list.stderr
+
+#     - debug:
+#         var: path.stderr
+
+#     - debug:
+#         var: osname.stderr
+
+
+
+
 ---
 - hosts: target_vm
   tasks:
-    - name: Execute your_role role
+    - name: Execute motd role
       import_role:
-        name: compliance-audit/roles/ansible_ntp  # Update with the correct path to your role
+        name: compliance-audit/roles/ansible_motd
 
-    - name: Fetch role outputs file from target VM
+    - name: Execute ntp role
+      import_role:
+        name: compliance-audit/roles/ansible_ntp
+
+    - name: Execute passwd role
+      import_role:
+        name: compliance-audit/roles/ansible_passwd
+        
+    - name: Fetch motd role outputs file from target VM
       fetch:
-        src: "/tmp/role_outputs.yml"
-        dest: "/tmp/role_outputs.yml"
+        src: "/tmp/ansible_motd/role_outputs.yml"
+        dest: "/tmp/ansible_motd/role_outputs.yml"
+        flat: yes
+    
+    - name: Fetch ntp role outputs file from target VM
+      fetch:
+        src: "/tmp/ansible_ntp/role_outputs.yml"
+        dest: "/tmp/ansible_ntp/role_outputs.yml"
+        flat: yes
+    
+    - name: Fetch passwd role outputs file from target VM
+      fetch:
+        src: "/tmp/ansible_passwd/role_outputs.yml"
+        dest: "/tmp/ansible_passwd/role_outputs.yml"
         flat: yes
 
     - name: Include role outputs
       include_vars:
-        file: "/tmp/role_outputs.yml"
+        file: "/tmp/ansible_passwd/role_outputs.yml"
 
-    - name: Display role execution results
+    - name: Display failure reason if any role block failed
       debug:
-        var: files_list.stderr
+        msg: "{{ failure_reason }}"
+      when: role_failed | default(false)
 
-    - debug:
-        var: path.stderr
-
-    - debug:
-        var: osname.stderr
