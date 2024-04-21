@@ -20,7 +20,7 @@
 
 - name: return compliance result
   set_fact:
-    motd_audit_ntp: "{ 'compliant': {{ ( false if (files_list.changed) else true ) }} }"
+    motd_audit_ntp: "{ 'compliant': {{ ( true if (files_list.changed) else false ) }} }"
 
 - ansible.builtin.debug:
     var: motd_audit_ntp
