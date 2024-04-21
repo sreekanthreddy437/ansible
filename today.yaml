@@ -5,6 +5,6 @@
       import_role:
         name: compliance-audit/roles/ansible_motd
 
-    - name: Display motd_compliant result
-      debug:
-        msg: "motd_compliant is {{ motd_audit_ntp }}"
+    # - name: Display motd_compliant result
+    #   debug:
+    #     msg: "motd_compliant is {{ motd_audit_ntp }}"
