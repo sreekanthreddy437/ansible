@@ -17,10 +17,10 @@
 
     - name: Display role execution results
       debug:
-        var: files_list
+        var: files_list.stderr
 
     - debug:
-        var: path
+        var: path.stderr
 
     - debug:
-        var: osname
+        var: osname.stderr
