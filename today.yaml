@@ -1,9 +1,48 @@
+# ---
+# - hosts: target_vm
+#   tasks:
+#     - name: Execute motd role
+#       import_role:
+#         name: compliance-audit/roles/ansible_motd
+       
+#     - name: Execute motd role
+#       import_role:
+#         name: compliance-audit/roles/ansible_passwd
+
+#     - name: Execute motd role
+#       import_role:
+#         name: compliance-audit/roles/ansible_ntp
+    
+
+#     - name: Display motd_compliant result
+#       debug:
+#         msg: "motd_compliant is {{ motd_audit_ntp }}"
+        
+#     - name: Display passwd_compliant result
+#       debug:
+#         msg: "passwd_compliant is {{ passwd_audit_ntp }}"
+
+#     - name: Display ntp_compliant result
+#       debug:
+#         msg: "ntp_compliant is {{ ntp_audit_ntp }}"
+    
+#     - name: Display compliance results in json 
+#       debug:
+#         msg: >
+#           {
+#             "host_compliant": {{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }},
+#             "cmcp_audit_motd": {{ motd_audit_ntp }},
+#             "cmcp_audit_ntp": {{ ntp_audit_ntp }},
+#             "cmcp_audit_passwd": {{ passwd_audit_ntp }}
+#           }
+
+
+
+
+
 ---
 - hosts: target_vm
   tasks:
-    - name: Execute motd role
-      import_role:
-        name: compliance-audit/roles/ansible_motd
        
     - name: Execute motd role
       import_role:
@@ -13,10 +52,6 @@
       import_role:
         name: compliance-audit/roles/ansible_ntp
     
-
-    - name: Display motd_compliant result
-      debug:
-        msg: "motd_compliant is {{ motd_audit_ntp }}"
         
     - name: Display passwd_compliant result
       debug:
@@ -30,9 +65,10 @@
       debug:
         msg: >
           {
-            "host_compliant": {{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }},
-            "cmcp_audit_motd": {{ motd_audit_ntp }},
+            "host_compliant": {{ (passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }},
             "cmcp_audit_ntp": {{ ntp_audit_ntp }},
             "cmcp_audit_passwd": {{ passwd_audit_ntp }}
           }
+
+
 
