@@ -3,7 +3,7 @@
   tasks:
     - name: Execute ntp role
       import_role:
-        name: roles/ntp/tasks
+        name: compliance-audit/roles/ansible_ntp/tasks
     - name: Display ntp_compliant result
       debug:
         msg: ntp_compliant is {{ ntp_audit_ntp }}
