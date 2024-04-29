@@ -42,7 +42,7 @@
         login_db: ansible
         sql: >
           INSERT INTO ansible (host_id, scan_result, compliant, ticketref, ticketstatus)
-          VALUES ('{{ target_vm }}', '{{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }}', '{"cmcp_audit_motd": {{ motd_audit_ntp }}, "cmcp_audit_ntp": {{ ntp_audit_ntp }}, "cmcp_audit_passwd": {{ passwd_audit_ntp }}}', null, null)
+          VALUES ('${data1}', '{{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }}', '{"cmcp_audit_motd": {{ motd_audit_ntp }}, "cmcp_audit_ntp": {{ ntp_audit_ntp }}, "cmcp_audit_passwd": {{ passwd_audit_ntp }}}', null, null)
 
 # ---
 # - hosts: target_vm
