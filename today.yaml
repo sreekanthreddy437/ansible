@@ -35,11 +35,22 @@
             "cmcp_audit_ntp": {{ ntp_audit_ntp }},
             "cmcp_audit_passwd": {{ passwd_audit_ntp }}
           }
-    - name: Insert data into database
+    - name: Insert data into database-1
       mysql_db:
+        name: Insert data into database  # Add a name attribute here
         login_user: example-user
         login_password: my_cool_secret
         login_db: ansible
+        sql: >
+          INSERT INTO ansible (host_id, scan_result, compliant, ticketref, ticketstatus)
+          VALUES ('${data1}', '{{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }}', '{"cmcp_audit_motd": {{ motd_audit_ntp }}, "cmcp_audit_ntp": {{ ntp_audit_ntp }}, "cmcp_audit_passwd": {{ passwd_audit_ntp }}}', null, null)
+      
+    - name: Insert data into database
+      mysql_db:
+        login_user: "example-user"
+        login_password: "my_cool_secret"
+        login_db: "ansible"
+        login_host: "some-mariadb"
         sql: >
           INSERT INTO ansible (host_id, scan_result, compliant, ticketref, ticketstatus)
           VALUES ('${data1}', '{{ (motd_audit_ntp.compliant and passwd_audit_ntp.compliant and ntp_audit_ntp.compliant) | lower }}', '{"cmcp_audit_motd": {{ motd_audit_ntp }}, "cmcp_audit_ntp": {{ ntp_audit_ntp }}, "cmcp_audit_passwd": {{ passwd_audit_ntp }}}', null, null)
