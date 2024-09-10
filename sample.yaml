@@ -1,0 +1,11 @@
+---
+- name: Ansible Playbook to Execute a Command
+  hosts: all
+  tasks:
+    - name: Execute a command and show the output
+      command: uname -a
+      register: command_output
+
+    - name: Print the command output
+      debug:
+        var: command_output.stdout
