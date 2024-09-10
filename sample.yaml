@@ -1,6 +1,6 @@
 ---
 - name: Ansible Playbook to Execute a Command
-  hosts: all
+  hosts: today-group
   tasks:
     - name: Execute a command and show the output
       command: uname -a
